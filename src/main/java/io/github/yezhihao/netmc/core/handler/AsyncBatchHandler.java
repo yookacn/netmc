@@ -94,10 +94,11 @@ public class AsyncBatchHandler extends Handler {
                     log.warn("批处理耗时:{}ms,共{}条记录", time, i);
             }
 
+            for (int j = 0; j < i; j++)
+                array[j] = null;
+
             if (i < maxElements) {
                 try {
-                    for (int j = 0; j < i; j++)
-                        array[j] = null;
                     Thread.sleep(maxWait);
                 } catch (InterruptedException ignored) {
                 }
